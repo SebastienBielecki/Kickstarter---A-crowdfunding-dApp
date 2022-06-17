@@ -8,10 +8,15 @@ const app = next({
 const routes = require("./routes");
 const handler = routes.getRequestHandler(app);
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
 app.prepare().then(() => {
     require("dotenv").config();
-    createServer(handler).listen(3000, (err) => {
+    createServer(handler).listen(port, (err) => {
         if (err) throw err;
-        console.log("Ready on localhost:3000");
+        console.log("Server Ready");
     })
 });
