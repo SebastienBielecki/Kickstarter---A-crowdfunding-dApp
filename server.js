@@ -8,6 +8,8 @@ const app = next({
 const routes = require("./routes");
 const handler = routes.getRequestHandler(app);
 
+
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
